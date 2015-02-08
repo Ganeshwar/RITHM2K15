@@ -1564,7 +1564,7 @@ hr {
 /* l. Portfolio Section
 /* =================================================================== */
 #portfolio {
-	background: #A9F5F2;
+	background: #12151b url( ../images/event_bg2.jpg) no-repeat center center fixed;
 	padding-top: 120px;
 	padding-bottom: 110px;
 }
@@ -1665,7 +1665,7 @@ hr {
 /*  m. Services Section
 /* =================================================================== */
 #services {
-	background:#BCF5A9;
+	background:#12151b url( ../images/reg_bg.jpg) no-repeat center center fixed;;
 	padding-top: 120px;
 	padding-bottom: 120px;
 	text-align: center;
@@ -1841,7 +1841,7 @@ hr {
 /*  p. Contact Section
 /* =================================================================== */
 #contact {
-	background: white;
+	background: #12151b url( ../images/contact_bg.jpg) no-repeat center center fixed;;
 	padding-top: 120px;
 	padding-bottom: 102px;
 	overflow: hidden;
@@ -1874,7 +1874,7 @@ hr {
 	margin-bottom: 42px;
 	font-size: 15px;
 	width: 100%;
-	background: #12151b;
+	background: white;
 	border: 3px solid #575859;
 }
 #contact textarea {
