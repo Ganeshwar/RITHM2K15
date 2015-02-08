@@ -21,14 +21,14 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/media-queries.css">         
-
-   <!-- Script
-   =================================================== -->
-   <script src="js/modernizr.js"></script>
+  <link href="css/flipTimer.css" rel="stylesheet">
+  <!-- Script
+  =================================================== -->
+  <script src="js/modernizr.js"></script>
 
    <!-- Favicons
    =================================================== -->
-   <link rel="shortcut icon" href="favicon.png" >
+   <link rel="shortcut icon" href="favicon.jpg" >
 
  </head>
 
@@ -87,16 +87,21 @@
     <div >
 
      <div >
-       <img style="width:2200px;height:650px;" class="rak"src="images/rlogo.jpg" alt="RITHM LOGO">
+       <img width="100%" class="rak"src="images/Rithm.jpg" alt="RITHM LOGO">
 
      </div> <!-- .flexslider -->           
 
    </div> <!-- .flex-container -->      
 
  </div> <!-- .hero-content -->    
-
+ <div align="middle" class="flipTimer">
+    <div class="days"></div>
+    <div class="hours"></div>
+    <div class="minutes"></div>
+    <div class="seconds"></div>
+  </div>
+  <strong><p  align="middle"><font size="12px">Awesomeness on the way.</font></p></strong>
 </section> <!-- #hero -->
-
 
 
 
@@ -414,11 +419,11 @@
 </div> <!-- /contact-form -->      	
 
 </div> <!-- /form-section -->     
- <p align="middle" 
- class="copyright">&copy; Copyright @rithm2k15</p>        
+<p align="middle" 
+class="copyright">&copy; Copyright @rithm2k15</p>        
 </section>  <!-- /contact-->
 
-        
+
 
 
 
@@ -426,6 +431,9 @@
    ================================================== -->
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
    <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
+
+   <script src="js/jquery.flipTimer.js"></script>
+
    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>   
    <script src="js/jquery.flexslider.js"></script>
    <script src="js/jquery.fittext.js"></script>
@@ -433,6 +441,22 @@
    <script src="js/waypoints.js"></script>  
    <script src="js/main.js"></script>
 
- </body>
+   <script type="text/javascript">
+   $(document).ready(function() {
+$('.flipTimer').flipTimer({
+ 
+// count up or countdown
+direction: 'down',
+ 
+// the target <a href="http://www.jqueryscript.net/time-clock/">date</a>
+date: 'March 13, 2015 12:00:00',
+ 
+// callback works only with direction = "down"
+callback: function() { alert('times up!'); }
+ 
+});
+});
+  </script>
+</body>
 
- </html>
+</html>
