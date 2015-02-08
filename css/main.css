@@ -1400,7 +1400,7 @@ hr {
 /* k. Hero Section
 /* =================================================================== */
 #hero {
-	background-color: #3B240B;
+	background: #12151b url( ../images/brown.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover !important;
 	-moz-background-size: cover !important;
 	background-size: cover !important;
@@ -1665,7 +1665,7 @@ hr {
 /*  m. Services Section
 /* =================================================================== */
 #services {
-	background:#BCA9F5;
+	background:#BCF5A9;
 	padding-top: 120px;
 	padding-bottom: 120px;
 	text-align: center;
@@ -1703,7 +1703,7 @@ hr {
 /* =================================================================== */
 
 #about {
-	background: white;
+	background: #12151b;
 	padding-top: 120px;
 	padding-bottom: 110px;
 }
@@ -1715,6 +1715,9 @@ hr {
 	text-transform: none;
 	padding: 0;
 	margin-bottom: 0;
+}
+#about h1 {
+	color: white;
 }
 #about p {
 	color: #707273;
@@ -1729,7 +1732,7 @@ hr {
 /* Team Section
 /* -------------------------------------------------------------------- */
 #about #team {
-	background: #ecf0f1;
+	background: #12151b;
 	margin-top: 66px;
 	padding-top: 78px;
 	padding-bottom: 120px;
@@ -1838,7 +1841,7 @@ hr {
 /*  p. Contact Section
 /* =================================================================== */
 #contact {
-	background: #12151b;
+	background: white;
 	padding-top: 120px;
 	padding-bottom: 102px;
 	overflow: hidden;
@@ -1847,7 +1850,7 @@ hr {
 	max-width: 784px;
 }
 #contact h1 {
-	color: white;
+	color: black;
 }
 
 /* contact form */
