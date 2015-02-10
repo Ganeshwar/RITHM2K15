@@ -3,6 +3,191 @@
 <!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="no-js ie ie9" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+
+
+
+<SCRIPT type="text/javascript">
+var snowmax=70
+var snowcolor=new Array("#aaaacc","#ddddff","#ccccdd","#f3f3f3","#f0ffff")
+var snowtype=new Array("Times","Arial","Times","Verdana")
+var snowletter="*"
+var sinkspeed=1.6
+var snowmaxsize=40
+var snowminsize=8
+var snowingzone=1
+var snow=new Array()
+var marginbottom
+var marginright
+var timer
+var i_snow=0
+var x_mv=new Array();
+var crds=new Array();
+var lftrght=new Array();
+var browserinfos=navigator.userAgent
+var ie5=document.all&&document.getElementById&&!browserinfos.match(/Opera/)
+var ns6=document.getElementById&&!document.all
+var opera=browserinfos.match(/Opera/)
+var browserok=ie5||ns6||opera
+ 
+function randommaker(range) {
+rand=Math.floor(range*Math.random())
+return rand
+}
+ 
+function initsnow() {
+if (ie5 || opera) {
+marginbottom = document.body.scrollHeight
+marginright = document.body.clientWidth-15
+}
+else if (ns6) {
+marginbottom = document.body.scrollHeight
+marginright = window.innerWidth-15
+}
+var snowsizerange=snowmaxsize-snowminsize
+for (i=0;i<=snowmax;i++) {
+crds[i] = 0;
+lftrght[i] = Math.random()*15;
+x_mv[i] = 0.03 + Math.random()/10;
+snow[i]=document.getElementById("s"+i)
+snow[i].style.fontFamily=snowtype[randommaker(snowtype.length)]
+snow[i].size=randommaker(snowsizerange)+snowminsize
+snow[i].style.fontSize=snow[i].size+'px';
+snow[i].style.color=snowcolor[randommaker(snowcolor.length)]
+snow[i].style.zIndex=1000
+snow[i].sink=sinkspeed*snow[i].size/5
+if (snowingzone==1) {snow[i].posx=randommaker(marginright-snow[i].size)}
+if (snowingzone==2) {snow[i].posx=randommaker(marginright/2-snow[i].size)}
+if (snowingzone==3) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/4}
+if (snowingzone==4) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/2}
+snow[i].posy=randommaker(2*marginbottom-marginbottom-2*snow[i].size)
+snow[i].style.left=snow[i].posx+'px';
+snow[i].style.top=snow[i].posy+'px';
+}
+movesnow()
+}
+ 
+function movesnow() {
+for (i=0;i<=snowmax;i++) {
+crds[i] += x_mv[i];
+snow[i].posy+=snow[i].sink
+snow[i].style.left=snow[i].posx+lftrght[i]*Math.sin(crds[i])+'px';
+snow[i].style.top=snow[i].posy+'px';
+ 
+if (snow[i].posy>=marginbottom-2*snow[i].size || parseInt(snow[i].style.left)>(marginright-3*lftrght[i])){
+if (snowingzone==1) {snow[i].posx=randommaker(marginright-snow[i].size)}
+if (snowingzone==2) {snow[i].posx=randommaker(marginright/2-snow[i].size)}
+if (snowingzone==3) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/4}
+if (snowingzone==4) {snow[i].posx=randommaker(marginright/2-snow[i].size)+marginright/2}
+snow[i].posy=0
+}
+}
+var timer=setTimeout("movesnow()",50)
+}
+ 
+for (i=0;i<=snowmax;i++) {
+document.write("<span id='s"+i+"' style='position:absolute;top:-"+snowmaxsize+"'>"+snowletter+"</span>")
+}
+if (browserok) {
+window.onload=initsnow
+}
+</SCRIPT>
+
+<style type="text/css">
+#outerCircleText {
+font-style: italic;
+font-weight: bold;
+font-family: 'cambria';
+color: #f26522;
+position: absolute;top: 0;left: 0;z-index: 3000;cursor: default;}
+#outerCircleText div {position: relative;}
+#outerCircleText div div {position: absolute;top: 0;left: 0;text-align: center;}
+</style>
+<script type="text/javascript">
+;(function(){
+ 
+var msg = "RITHM2K15";
+var size = 17;
+var circleY = 0.75; var circleX = 2;
+var letter_spacing = 5;
+var diameter = 10;
+var rotation = 0.27;
+var speed = 0.3;
+ 
+if (!window.addEventListener && !window.attachEvent || !document.createElement) return;
+ 
+msg = msg.split('');
+var n = msg.length - 1, a = Math.round(size * diameter * 0.208333), currStep = 20,
+ymouse = a * circleY + 20, xmouse = a * circleX + 20, y = [], x = [], Y = [], X = [],
+o = document.createElement('div'), oi = document.createElement('div'),
+b = document.compatMode && document.compatMode != "BackCompat"? document.documentElement : document.body,
+ 
+mouse = function(e){
+ e = e || window.event;
+ ymouse = !isNaN(e.pageY)? e.pageY : e.clientY; // y-position
+ xmouse = !isNaN(e.pageX)? e.pageX : e.clientX; // x-position
+},
+ 
+makecircle = function(){
+ if(init.nopy){
+  o.style.top = (b || document.body).scrollTop + 'px';
+  o.style.left = (b || document.body).scrollLeft + 'px';
+ };
+ currStep -= rotation;
+ for (var d, i = n; i > -1; --i){
+  d = document.getElementById('iemsg' + i).style;
+  d.top = Math.round(y[i] + a * Math.sin((currStep + i) / letter_spacing) * circleY - 15) + 'px';
+  d.left = Math.round(x[i] + a * Math.cos((currStep + i) / letter_spacing) * circleX) + 'px';
+ };
+},
+ 
+drag = function(){
+ y[0] = Y[0] += (ymouse - Y[0]) * speed;
+ x[0] = X[0] += (xmouse - 20 - X[0]) * speed;
+ for (var i = n; i > 0; --i){
+  y[i] = Y[i] += (y[i-1] - Y[i]) * speed;
+  x[i] = X[i] += (x[i-1] - X[i]) * speed;
+ };
+ makecircle();
+},
+ 
+init = function(){
+ if(!isNaN(window.pageYOffset)){
+  ymouse += window.pageYOffset;
+  xmouse += window.pageXOffset;
+ } else init.nopy = true;
+ for (var d, i = n; i > -1; --i){
+  d = document.createElement('div'); d.id = 'iemsg' + i;
+  d.style.height = d.style.width = a + 'px';
+  d.appendChild(document.createTextNode(msg[i]));
+  oi.appendChild(d); y[i] = x[i] = Y[i] = X[i] = 0;
+ };
+ o.appendChild(oi); document.body.appendChild(o);
+ setInterval(drag, 25);
+},
+ 
+ascroll = function(){
+ ymouse += window.pageYOffset;
+ xmouse += window.pageXOffset;
+ window.removeEventListener('scroll', ascroll, false);
+};
+ 
+o.id = 'outerCircleText'; o.style.fontSize = size + 'px';
+ 
+if (window.addEventListener){
+ window.addEventListener('load', init, false);
+ document.addEventListener('mouseover', mouse, false);
+ document.addEventListener('mousemove', mouse, false);
+  if (/Apple/.test(navigator.vendor))
+   window.addEventListener('scroll', ascroll, false);
+}
+else if (window.attachEvent){
+ window.attachEvent('onload', init);
+ document.attachEvent('onmousemove', mouse);
+};
+ 
+})();
+ 
+/*credit: tempermedia.com/*/</script>
 <head>
 
    <!--- Basic Page Needs
@@ -64,12 +249,12 @@
        </a>         
 
        <ul id="nav" class="nav">
-         <li class="current"><a class="smoothscroll" href="#team">|About|</a></li>
-         <li class="current"><a class="smoothscroll" href="#hero">|DiveIn|</a></li>
-         <li><a class="smoothscroll" href="#portfolio">|Events|</a></li>
-         <li><a class="smoothscroll" href="#services">|Registration|</a></li>
-         <li><a class="smoothscroll" href="#about">|Gallery|</a></li>
-         <li><a class="smoothscroll" href="#contact">|Contact|</a></li>
+         <li onclick="playSound('zbluejay.wav');" class="current"><a class="smoothscroll" href="#team">|About|</a></li>
+         <li onclick="playSound('zbluejay.wav');" class="current"><a class="smoothscroll" href="#hero">|DiveIn|</a></li>
+         <li><a onclick="playSound('zbluejay.wav');" class="smoothscroll" href="#portfolio">|Events|</a></li>
+         <li><a onclick="playSound('zbluejay.wav');" class="smoothscroll" href="#services">|Registration|</a></li>
+         <li><a onclick="playSound('zbluejay.wav');" class="smoothscroll" href="#about">|Gallery|</a></li>
+         <li><a onclick="playSound('zbluejay.wav');" class="smoothscroll" href="#contact">|Contact|</a></li>
        </ul> 
 
      </nav> <!-- /nav-wrap -->	      
@@ -116,20 +301,20 @@
      <div >
 
       <div>
-          <div class="flex-caption">
+        <div class="flex-caption">
           <h1 style="color:#f26522"align="middle">RITHM2K15.<br>Youth Fest<br>At Best</h1> 
           <p align="middle" >
-            
-Welcome!!!<br>
 
-                             
+            Welcome!!!<br>
 
-                                                                            
-RITHM 2K15 is a national level youth fest which provides a perfect platform for all the participants to prove their competence in cultural, sport and technical events.<br>
 
-It was first proposed by our Vice chairman of Regency Group, late Er.VC Chandrasekhar,and was celebrated with Great Spirit and enthusiasm during Feb. 2012 for the very first time.<br>
 
-Continuing the legacy of the past we are heading towards organizing the event. Hence we apprise you all to adorn this event like the years before.
+
+            RITHM 2K15 is a national level youth fest which provides a perfect platform for all the participants to prove their competence in cultural, sport and technical events.<br>
+
+            It was first proposed by our Vice chairman of Regency Group, late Er.VC Chandrasekhar,and was celebrated with Great Spirit and enthusiasm during Feb. 2012 for the very first time.<br>
+
+            Continuing the legacy of the past we are heading towards organizing the event. Hence we apprise you all to adorn this event like the years before.
           </p><br>
           <p  align="middle"><a  class="button stroke smoothscroll" href="#hero">DiveIn</a></p>                                   
         </div>            
@@ -298,7 +483,15 @@ Continuing the legacy of the past we are heading towards organizing the event. H
 
    		<div class="twelve columns">
 
-        <h1>Registration<span></span></h1>
+      <p style="
+      font: 64px/1.3 'raleway-semibold', sans-serif;
+  color: white;
+  letter-spacing: -1px;
+  margin-bottom: 36px;
+  text-shadow: 0 0px 5px rgba(0, 0, 0, 0.5);
+      "
+
+      align="middle">REGISTRATION</p>
         <hr />
         <iframe src="https://docs.google.com/forms/d/1mRKcXMdqFXPICGjwRtjLH9N7cOjrMRZNtXQ8d9RNIVM/viewform?embedded=true" width="800" height="1400" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
       </div>
@@ -491,6 +684,13 @@ callback: function() { alert('times up!'); }
 });
     });
    </script>
- </body>
+   <script language="javascript" type="text/javascript">
+    function playSound(soundfile) {
+      document.getElementById("dummy").innerHTML= "<embed src=\""
+      +soundfile+"\" hidden=\"true\" autostart=\"true\"
+      loop=\"false\" />";
+    }
+  </script>
+</body>
 
- </html>
+</html>
