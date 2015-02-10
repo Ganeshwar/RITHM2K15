@@ -1263,7 +1263,7 @@ hr {
 	font: 15px/24px "raleway-heavy", sans-serif;
 	text-transform: uppercase;
 	letter-spacing: 2.5px;
-	color: #252525;
+	color: white;
 	margin-bottom: 18px;
 }
 .section-head h1 span {
@@ -1850,7 +1850,7 @@ hr {
 	max-width: 784px;
 }
 #contact h1 {
-	color: black;
+	color: white;
 }
 
 /* contact form */
