@@ -1904,7 +1904,7 @@ hr {
 #contact input:focus, 
 #contact textarea:focus, 
 #contact select:focus {
-	color: white;
+	color: black;
 	border-color: white;
 }
 #contact button.submit {
